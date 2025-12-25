@@ -93,5 +93,14 @@ If we need to delete a cluster we can use bellow command
 ```
 kind delete cluster --name <cluster-name>
 ```
-
-
+---
+## Namespace
+In Kubernetes, a namespace is a logical partition within a cluster that allows you to divide and organize resources like pods, services, deployments, and other objects. Namespaces help in managing resources, especially when there are multiple teams, projects, or environments using the same Kubernetes cluster.
+To create namespace we can use bellow command
+```
+kubectl create namespace <name>
+```
+We can see all the namespace using bellow command
+```
+kubectl get namespaces
+```
