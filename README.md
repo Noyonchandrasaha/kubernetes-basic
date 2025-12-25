@@ -60,6 +60,7 @@ These tools will help you create a local cluster to test and manage Kubernetes d
 In this particular documentation we will use **Kind**.
 
 First of all we will show the commands then we will clear about each concepts
+
 ---
 ## Create a Kubernetes cluster
 First of all before create a cluster we have to check all the existing cluster. So to check the all existing cluster run the bellow command
