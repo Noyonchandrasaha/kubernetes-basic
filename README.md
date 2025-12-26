@@ -265,3 +265,54 @@ If we want to delete a pod we can use bellow command
 ```
 kubectl delete pod <pod-name> --namespace=<namespace>
 ```
+---
+## Deployment
+A **Deployment** in Kubernetes is a higher-level abstraction that manages the lifecycle of Pods and their containers. It ensures that our application is running in the desired state, with features like scaling, rolling updates, and self-healing. Essentially, a Deployment automates the management of Pods to ensure our app is highly available, scalable, and up-to-date.
+**Key Features of a Deployment:**
+- **Replica Management:** A Deployment allows us to specify the number of replicas (identical Pods) we want to run. Kubernetes ensures that the desired number of Pods are always running.
+- **Rolling Updates:** When we want to update our application (e.g., new version of the container image), a Deployment enables rolling updates. This means it updates our Pods gradually (one at a time) to minimize downtime.
+- **Self-Healing:** If any of the Pods managed by the Deployment fail or crash, the Deployment automatically creates new Pods to replace the failed ones, ensuring high availability.
+- **Scaling:** We can easily scale our application up or down by changing the number of replicas in the Deployment.
+- **Rollback:** Deployments keep track of the changes made to the Pods. If something goes wrong with the new version,we can roll back to a previous version of the Deployment.
+Bellow I add a dummay template of Deployment code
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: next-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: next-app
+  template:
+    metadata:
+      labels:
+        app: next-app
+    spec:
+      containers:
+      - name: next-app
+        image: noyonsaha/docker-next-app:latest
+        ports:
+        - containerPort: 3000
+```
+Now we have to run bellow command 
+```
+kubectl apply -f <file-directory> --namespace=<namespace-name>
+```
+Now if we want to validate our created deployment we can check following bellow command
+```
+kubectl get deploy --namespace=<namespace-name>
+```
+If we want to show more wide format we can use bellow format
+```
+kubectl get deploy --namespace=<namespace-name> -o wide
+```
+Now if we need more details information of this deployment we can use the bellow command
+```
+kubectl describe deploy <deployment-name> --namespace=<namespace-name>
+```
+If we want to delete the deployment we can use bellow command
+```
+kubectl delete deploy <deployment-name> --namespace=<namespace-name>
+```
