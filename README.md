@@ -208,3 +208,18 @@ If we want to delete a particular configmap we can use bellow command
 ```
 kubectl delete configmap <configmap-name> --namespace=<namespace-name>
 ```
+
+---
+
+## Pods
+A **Pod** is the smallest and simplest unit of deployment in Kubernetes. It represents a single instance of a running process in your cluster. When you deploy an application in Kubernetes, it runs inside a Pod.
+### What is a Pod?
+A **Pod** is a **logical host** for one or more containers that share the same network, storage, and runtime environment. In Kubernetes, containers run inside Pods. Pods can host:
+- **A single container:** This is the most common use case.
+- **Multiple containers:** Sometimes you may need more than one container inside the same Pod, which may need to share resources, such as data volumes or network connections.
+
+### Why Use Pods?
+**Pods** provide an abstraction layer between your application containers and the underlying infrastructure. They are designed to:
+- **Simplify Deployment:** By grouping containers into logical units.
+- **Enable Shared Resources:** Allow containers to share resources like storage volumes and network interfaces.
+- **Improve Scalability and Management:** Pods allow Kubernetes to manage and scale containers effectively, automatically adjusting the number of replicas as required.
