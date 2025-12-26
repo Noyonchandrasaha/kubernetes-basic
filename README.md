@@ -134,3 +134,19 @@ In Kubernetes, Secrets and ConfigMaps are two essential resources used for manag
   - **TLS:** Stores TLS certificates and keys.
   - **BasicAuth:** Stores HTTP basic authentication credentials.
   - **SSHAuth:** Stores SSH authentication information.
+
+### ConfigMaps in Kubernetes
+**ConfigMaps** are used for storing non-sensitive configuration data in a Kubernetes cluster. These configurations might include settings, environment variables, configuration files, or any data that does not require high security.
+**Key Points about ConfigMaps:**
+- **Non-Sensitive Data:** ConfigMaps store configuration data like URLs, application settings, or any other non-sensitive information that needs to be accessible by Pods.
+- **Text-Based:** ConfigMaps store data as plain text key-value pairs. There is no base64 encoding, as the data is not sensitive.
+- **Use Cases:** ConfigMaps are ideal for managing environment-specific settings (e.g., staging, production), application configurations, or feature flags that need to be applied across multiple Pods.
+- **Access Control:** While ConfigMaps are generally not sensitive, Kubernetes still supports RBAC for controlling access to ConfigMaps.
+**Key Differences Between Secrets and ConfigMaps**
+  
+| Feature    | Secrets                                    | ConfigMaps                                          |
+|------------|--------------------------------------------|-----------------------------------------------------|
+| **Purpose**  | Store sensitive data (passwords, API keys, certificates, etc.) | Store non-sensitive configuration data (URLs, settings, environment variables) |
+| **Data Encoding** | Data is base64-encoded (but not encrypted by default) | Data is stored as plain text key-value pairs        |
+| **Use Cases** | Storing sensitive information like passwords, certificates, OAuth tokens | Storing application settings, environment variables, feature flags |
+
