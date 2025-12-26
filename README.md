@@ -152,7 +152,7 @@ In Kubernetes, Secrets and ConfigMaps are two essential resources used for manag
 
 ### How To Create a Secret file
 You can create secret file many way like using yaml configuration or you can use inline kubectl command. I will use yaml configuration
-Bellow I add a sample demo secret yaml file to create a Secret
+Bellow I add a sample demo secret yaml Format to create a Secret
 ```
 apiVersion: v1
 kind: Secret
@@ -166,7 +166,7 @@ data:
 One thing we have to keep in our mind that is we will keep our secret value in **base64** encode.
 Now we run bellow command to create this Secrets in a specific namespace
 ```
-kubectl apply -f .\mongo-secret.yaml --namespace=<namespace name>
+kubectl apply -f <file-directory> --namespace=<namespace-name>
 ```
 We can validatate our secret using bellow command
 ```
@@ -179,4 +179,32 @@ kubectl get secret <secret-name> --namespace=<namespace-name> -o yaml
 If we want, we also delete this secret using bellow command
 ```
 kubectl delete secret <secret-name> --namespace=<namespace-name>
+```
+
+### How to create a ConfigMap in a particular Namespace
+As like the secret fule you also can create ConfigMap. we will use yaml format here
+Bellow I add a sample demo ConfigMap yaml format to create a ConfigMap
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config 
+data:
+  MONGO_URL: anything # we will set later
+```
+Now we run bellow command to create this ConfigMap in a particular namespace
+```
+kubectl apply -f <file-directory> --namespace=<namespace-name>
+```
+After creating the ConfigMap you can validate using bellow command
+```
+kubectl get configmap --namespace=<namespace-name>
+```
+If we want to see particular configmap yaml file we can use bellow command
+```
+kubectl get configmap <configmap-name> --namespace=<namespace-name> -o yaml
+```
+If we want to delete a particular configmap we can use bellow command
+```
+kubectl delete configmap <configmap-name> --namespace=<namespace-name>
 ```
