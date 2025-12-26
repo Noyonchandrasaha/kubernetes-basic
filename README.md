@@ -106,3 +106,18 @@ We can see all the namespace using bellow command
 ```
 kubectl get namespaces
 ```
+If we want we can set namespace context for all future kubectl commands use bellow commands
+```
+kubectl config set-context --current --namespace=<namespace name>
+```
+If you want to create a pod in particular namespace follow bellow command. if you donot use the namespace other wise it use the default namespace
+```
+kubectl apply -f <file name> --namespace=<namespace name>
+```
+If you want to delete a namespace use bellow command
+```
+kubectl delete namespace <namespace-name>
+```
+
+---
+
