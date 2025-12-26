@@ -120,4 +120,17 @@ kubectl delete namespace <namespace-name>
 ```
 
 ---
-
+## Secret and config file management
+In Kubernetes, Secrets and ConfigMaps are two essential resources used for managing configuration and sensitive data separately from application code. They provide a way to decouple configuration from the application itself, making it easier to maintain and secure, especially in production environments.
+### Secrets in Kubernetes
+**Secrets** are designed to store sensitive data, such as passwords, tokens, certificates, or API keys. Kubernetes provides mechanisms to encode and manage these secrets securely, limiting their exposure and ensuring they are only accessible to authorized entities.
+**Key Points about Secrets:**
+- **Sensitive Data:** Secrets are used for storing sensitive information that should not be exposed in plain text, like passwords, authentication tokens, SSH keys, etc.
+- **Base64 Encoding** Although the data in Secrets is stored in base64-encoded format, it is still accessible to users who have permission to access the secret. Kubernetes does not encrypt secrets by default (but you can configure encryption at rest).
+- **Access Control:** Kubernetes allows fine-grained access control to Secrets using RBAC (Role-Based Access Control), ensuring that only authorized users or services can access secrets.
+- **Types of Secrets:**
+  - **Opaque:** Generic secret type used for arbitrary key-value pairs.
+  - **DockerConfig:** Stores Docker credentials for accessing private Docker registries.
+  - **TLS:** Stores TLS certificates and keys.
+  - **BasicAuth:** Stores HTTP basic authentication credentials.
+  - **SSHAuth:** Stores SSH authentication information.
