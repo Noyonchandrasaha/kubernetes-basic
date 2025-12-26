@@ -150,3 +150,33 @@ In Kubernetes, Secrets and ConfigMaps are two essential resources used for manag
 | **Data Encoding** | Data is base64-encoded (but not encrypted by default) | Data is stored as plain text key-value pairs        |
 | **Use Cases** | Storing sensitive information like passwords, certificates, OAuth tokens | Storing application settings, environment variables, feature flags |
 
+### How To Create a Secret file
+You can create secret file many way like using yaml configuration or you can use inline kubectl command. I will use yaml configuration
+Bellow I add a sample demo secret yaml file to create a Secret
+```
+apiVersion: v1
+kind: Secret
+metadata: 
+  name: mongo-secret
+type: Opaque
+data:
+  MONGO_USER: bW9uZ291c2Vy
+  MONGO_PASSWORD: bW9uZ29wYXNzd29yZA==
+```
+One thing we have to keep in our mind that is we will keep our secret value in **base64** encode.
+Now we run bellow command to create this Secrets in a specific namespace
+```
+kubectl apply -f .\mongo-secret.yaml --namespace=<namespace name>
+```
+We can validatate our secret using bellow command
+```
+kubectl get secret --namespace=<namespace name>
+```
+If we want to see spcecific secret all value we can use bellow command
+```
+kubectl get secret <secret-name> --namespace=<namespace-name> -o yaml
+```
+If we want, we also delete this secret using bellow command
+```
+kubectl delete secret <secret-name> --namespace=<namespace-name>
+```
