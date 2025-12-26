@@ -223,3 +223,45 @@ A **Pod** is a **logical host** for one or more containers that share the same n
 - **Simplify Deployment:** By grouping containers into logical units.
 - **Enable Shared Resources:** Allow containers to share resources like storage volumes and network interfaces.
 - **Improve Scalability and Management:** Pods allow Kubernetes to manage and scale containers effectively, automatically adjusting the number of replicas as required.
+
+Bellow I add a demo structure how to create a pod using yaml file in a particular namespace:
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: next-app-pod
+spec:
+  containers:
+  - name: next-app
+    image: noyonsaha/docker-next-app:latest
+    ports:
+      - containerPort: 3000
+```
+Now create the pod using bellow command:
+```
+kubectl apply -f <file-directroy> --namespace=<namespace-name>
+```
+Now you can validate using bellow command that pod is created or not
+```
+kubectl get pod --namespace=<namespace-name>
+```
+If we want to see the pod information in wide format we can use bellow command:
+```
+kubectl get pod --namespace=<namespace-name> -o wide
+```
+If we want to describe a pod or want to know more details in the pod we can use bellow command
+```
+kubectl describe pod <pod-name> --namespace=<namespace-name>
+```
+If we want to see the logs of this pod we can use bellow command
+```
+kubectl logs <pod-name> --namespace=<namespace>
+```
+If the Pod has multiple containers, you can specify the container name using bellow command
+```
+kubectl logs <pod-name> -c <container-name> --namespace=<namespace>
+```
+If we want to delete a pod we can use bellow command
+```
+kubectl delete pod <pod-name> --namespace=<namespace>
+```
