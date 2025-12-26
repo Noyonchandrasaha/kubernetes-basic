@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: next-app-pod
+spec:
+  containers:
+  - name: next-app
+    image: noyonsaha/docker-next-app:latest
+    ports:
+      - containerPort: 3000
