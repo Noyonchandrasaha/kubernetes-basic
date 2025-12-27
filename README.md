@@ -333,3 +333,9 @@ If we want to delete the deployment we can use bellow command
 ```
 kubectl delete deploy <deployment-name> --namespace=<namespace-name>
 ```
+
+---
+Update docker Image
+```
+kubectl set image deployment/next-app-deployment next-app=noyonsaha/docker-next-app:v.9.3 --namespace=frontend
+```
