@@ -75,6 +75,23 @@ kind create cluster --name dev-env --image kindest/node:v1.34.0
 ```
 Using this commad we can create a kubernetes cluster. here we provde a cluster name using **--name** flag also use the specific version of kind image.
 
+We also can ceate a cluster using the configuration yaml file. bellow I add a demo configuration yaml file
+```
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 30200
+    hostPort: 30200
+- role: worker
+- role: worker
+```
+then wirte the bellow command to create the cluster
+```
+kind create cluster --config .\kind-cluster.yaml --name extarnal-test-env --image kindest/node:v1.34.0
+```
+
 All right now we are create our first kubernetes clustes. 
 
 If we have multiple cluster we have to navigate each clusters. To navigate each clusters we have to know what clusters we are in curretly. 
