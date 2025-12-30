@@ -333,6 +333,14 @@ If we want to delete the deployment we can use bellow command
 ```
 kubectl delete deploy <deployment-name> --namespace=<namespace-name>
 ```
+---
+## Services
+A **Service** in Kubernetes is like a fixed address (permanent entry point) to reach a group of Pods. Because Pods are not permanent (they restart, scale up/down, and their IP changes), Kubernetes gives a Service so you don’t need to track Pod IPs.
+### What a Service does:
+- Gives a stable IP + DNS name
+- Routes traffic to the correct Pods
+- Load balances traffic if there are multiple Pods
+If your backend has 3 Pods, Kubernetes Service acts like one gateway. Whenever someone calls the Service, it automatically forwards the request to one of those backend Pods.
 
 ---
 Update docker Image
