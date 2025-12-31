@@ -342,6 +342,10 @@ A **Service** in Kubernetes is like a fixed address (permanent entry point) to r
 - Load balances traffic if there are multiple Pods
 If your backend has 3 Pods, Kubernetes Service acts like one gateway. Whenever someone calls the Service, it automatically forwards the request to one of those backend Pods.
 
+Now we can use bellow command to create the service in the kubernetes.
+```
+kubectl apply -f <file-directory>
+```
 ---
 Update docker Image
 ```
