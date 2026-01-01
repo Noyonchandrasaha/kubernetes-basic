@@ -344,8 +344,13 @@ If your backend has 3 Pods, Kubernetes Service acts like one gateway. Whenever s
 
 Now we can use bellow command to create the service in the kubernetes.
 ```
-kubectl apply -f <file-directory>
+kubectl apply -f <file-directory> -namespace=<namespace-name>
 ```
+Now you can verify the service by following bellow command
+```
+kubectl get svc --namespace=<namespace-name>
+```
+
 ---
 Update docker Image
 ```
